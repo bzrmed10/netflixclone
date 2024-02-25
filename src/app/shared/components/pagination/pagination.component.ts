@@ -8,11 +8,26 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-
+import {
+  NgIconComponent,
+  provideIcons,
+  provideNgIconsConfig,
+} from '@ng-icons/core';
+import { heroChevronLeft, heroChevronRight } from '@ng-icons/heroicons/outline';
 @Component({
   selector: 'app-pagination',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, NgIconComponent],
+  providers: [
+    provideIcons({
+      heroChevronLeft,
+      heroChevronRight,
+    }),
+    provideNgIconsConfig({
+      size: '20px',
+      color: 'white',
+    }),
+  ],
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.scss',
 })

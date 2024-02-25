@@ -7,7 +7,7 @@
         [disabled]="current === 1"
         (click)="onPrevious()"
       >
-        Previous
+        <ng-icon name="heroChevronLeft"></ng-icon>
       </button>
     </li>
     <li *ngFor="let page of pages">
@@ -31,7 +31,7 @@
         [disabled]="current === total"
         (click)="onNext()"
       >
-        Next
+        <ng-icon name="heroChevronRight"></ng-icon>
       </button>
     </li>
   </ul>

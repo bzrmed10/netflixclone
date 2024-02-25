@@ -1,0 +1,50 @@
+/*-----------------------------------*\
+   * #MEDIA QUERIES
+  \*-----------------------------------*/
+
+/**
+   * responsive for large than 550px screen
+   */
+
+@media (min-width: 550px) {
+  .poster {
+    max-width: 100%;
+    height: 250px;
+  }
+}
+
+/**
+     * responsive for large than 768px screen
+     */
+
+@media (min-width: 768px) {
+  .poster {
+    max-width: 100%;
+    height: 360px;
+  }
+}
+
+/**
+     * responsive for large than 992px screen
+     */
+
+@media (min-width: 992px) {
+  .poster {
+    max-width: 100%;
+    height: 360px;
+  }
+}
+
+/**
+     * responsive for large than 1200px screen
+     */
+
+@media (min-width: 1200px) {
+  /**
+       * CUSTOM PROPERTY
+       */
+  .poster {
+    max-width: 100%;
+    height: 360px;
+  }
+}

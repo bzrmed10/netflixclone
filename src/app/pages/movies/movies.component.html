@@ -1,0 +1,36 @@
+<app-search (search)="searchMovie($event)"></app-search>
+<div class="flex flex-wrap justify-start mt-14">
+  <!-- Movie Card 1 -->
+  <div
+    *ngFor="let movie of movies"
+    class="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 p-2"
+  >
+    <!-- Movie Content -->
+    <div
+      class="bg-black rounded-lg p-4 hover:bg-red-700 cursor-pointer"
+      (click)="selectMovie(movie)"
+    >
+      <img
+        [src]="movie.poster_path | image"
+        alt="Movie 1"
+        class="w-full rounded-lg mb-2 poster"
+      />
+      <h3 class="text-lg font-semibold">
+        {{
+          (movie.original_title == null ? movie.name : movie.original_title)
+            | description : 20
+        }}
+      </h3>
+    </div>
+  </div>
+
+  <!-- Movie Card 2 -->
+  <!-- Repeat similar structure for other movies -->
+</div>
+<app-pagination
+  [current]="current"
+  [total]="total"
+  (goTo)="onGoTo($event)"
+  (next)="onNext($event)"
+  (previous)="onPrevious($event)"
+></app-pagination>

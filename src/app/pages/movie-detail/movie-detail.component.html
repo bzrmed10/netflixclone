@@ -1,0 +1,52 @@
+<!-- - #MOVIE DETAIL -->
+
+<section class="movie-detail w-full">
+  <div class="container">
+    <figure class="movie-detail-banner">
+      <img
+        [src]="selectedMovie!.poster_path | image"
+        alt="Free guy movie poster"
+      />
+
+      <button class="play-btn"></button>
+    </figure>
+
+    <div class="movie-detail-content">
+      <h1 class="h1 detail-title">
+        <strong>{{
+          selectedMovie!.original_title == null
+            ? selectedMovie!.name
+            : selectedMovie!.original_title
+        }}</strong>
+      </h1>
+
+      <div class="meta-wrapper">
+        <div class="badge-wrapper">
+          <div class="badge badge-outline">
+            <ng-icon name="heroFilm"></ng-icon>HD
+          </div>
+        </div>
+
+        <div class="badge badge-outline">
+          <ng-icon name="heroLanguage"></ng-icon>
+          {{ selectedMovie?.original_language | uppercase }}
+        </div>
+        <div class="badge badge-outline">
+          <ng-icon name="heroStar"></ng-icon>
+          {{ selectedMovie?.vote_average }}
+        </div>
+        <div class="badge badge-outline">
+          <ng-icon name="heroHandThumbUp"></ng-icon>
+          {{ selectedMovie?.vote_count }}
+        </div>
+      </div>
+      <p class="detail-subtitle"><strong>Overview</strong></p>
+      <p class="storyline">
+        {{ selectedMovie!.overview }}
+      </p>
+      <p class="detailInfo" *ngIf="selectedMovie?.release_date">
+        <strong>Release Date : </strong>{{ selectedMovie?.release_date }}
+      </p>
+    </div>
+  </div>
+</section>

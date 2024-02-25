@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../../core/components/header/header.component';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { MovieService } from '../../shared/services/movie.service';
 import { Observable } from 'rxjs';
 import { IVideoContent } from '../../shared/models/IVideoContent.interface';
@@ -9,6 +9,7 @@ import { DescriptionPipe } from '../../shared/pipe/description.pipe';
 import { PaginationComponent } from '../../shared/components/pagination/pagination.component';
 import { SearchComponent } from '../../shared/components/search/search.component';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { NoresultComponent } from '../../shared/components/noresult/noresult.component';
 
 @Component({
   selector: 'app-movies',
@@ -16,10 +17,12 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   imports: [
     HeaderComponent,
     NgFor,
+    NgIf,
     ImagePipe,
     DescriptionPipe,
     PaginationComponent,
     SearchComponent,
+    NoresultComponent,
   ],
   templateUrl: './movies.component.html',
   styleUrl: './movies.component.scss',

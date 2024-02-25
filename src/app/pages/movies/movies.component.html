@@ -23,11 +23,10 @@
       </h3>
     </div>
   </div>
-
-  <!-- Movie Card 2 -->
-  <!-- Repeat similar structure for other movies -->
 </div>
+<app-noresult *ngIf="movies.length == 0"></app-noresult>
 <app-pagination
+  *ngIf="movies.length > 0"
   [current]="current"
   [total]="total"
   (goTo)="onGoTo($event)"

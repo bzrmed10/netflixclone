@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../../core/components/header/header.component';
 import { AuthService } from '../../shared/services/auth.service';
 import { RouterOutlet } from '@angular/router';
+import { FooterComponent } from '../../core/components/footer/footer.component';
+import { ScrollupComponent } from '../../shared/components/scrollup/scrollup.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent, RouterOutlet],
+  imports: [HeaderComponent, RouterOutlet, FooterComponent, ScrollupComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

@@ -15,7 +15,9 @@ import {
   heroLanguage,
   heroHandThumbUp,
   heroFilm,
+  heroPlayCircle,
 } from '@ng-icons/heroicons/outline';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-movie-detail',
   standalone: true,
@@ -27,6 +29,7 @@ import {
       heroLanguage,
       heroHandThumbUp,
       heroFilm,
+      heroPlayCircle,
     }),
     provideNgIconsConfig({
       size: '20px',
@@ -38,6 +41,7 @@ import {
 })
 export class MovieDetailComponent implements OnInit {
   selectedMovie: IVideoContent | null = null;
+  videotrailerUrl: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -50,6 +54,11 @@ export class MovieDetailComponent implements OnInit {
   }
   ngOnInit(): void {
     this.movieService.selectedMovie$.subscribe((movie) => {
+      if (movie) {
+        this.movieService.getBannerVideo(movie.id).subscribe((res) => {
+          this.videotrailerUrl = `https://www.youtube.com/embed/${res.results[0].key}?autoplay=1&mute=1&loop=1&controls=0`;
+        });
+      }
       this.selectedMovie = movie;
     });
   }

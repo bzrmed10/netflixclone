@@ -61,10 +61,10 @@ export class BrowseComponent implements OnInit {
             topRated,
           ]) => {
             this.bannerDetails$ = this.movieService.getBannerDetail(
-              movies.results[10].id
+              movies.results[1].id
             );
             this.bannerVideo$ = this.movieService.getBannerVideo(
-              movies.results[10].id
+              movies.results[1].id
             );
             return {
               movies,

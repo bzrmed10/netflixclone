@@ -67,10 +67,13 @@ export class MovieService {
   }
 
   getBannerVideo(id: number) {
-    return this.http.get(`https://api.themoviedb.org/3/movie/${id}/videos`, {
-      params: this.getParams(),
-      headers: this.getHeaders(),
-    });
+    return this.http.get<any>(
+      `https://api.themoviedb.org/3/movie/${id}/videos`,
+      {
+        params: this.getParams(),
+        headers: this.getHeaders(),
+      }
+    );
   }
 
   getBannerDetail(id: number) {

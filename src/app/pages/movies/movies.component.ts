@@ -10,6 +10,7 @@ import { PaginationComponent } from '../../shared/components/pagination/paginati
 import { SearchComponent } from '../../shared/components/search/search.component';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NoresultComponent } from '../../shared/components/noresult/noresult.component';
+import { LoaderComponent } from '../../shared/components/loader/loader.component';
 
 @Component({
   selector: 'app-movies',
@@ -23,6 +24,7 @@ import { NoresultComponent } from '../../shared/components/noresult/noresult.com
     PaginationComponent,
     SearchComponent,
     NoresultComponent,
+    LoaderComponent,
   ],
   templateUrl: './movies.component.html',
   styleUrl: './movies.component.scss',
@@ -33,6 +35,7 @@ export class MoviesComponent implements OnInit {
   isSearching: boolean = false;
   searchName: string = '';
   urlPage: string = '';
+  isloading: boolean = true;
 
   movies: IVideoContent[] = [];
 
@@ -43,6 +46,7 @@ export class MoviesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.isloading = true;
     this.route.url.subscribe((segments) => {
       const lastSegment = segments[segments.length - 1].path;
       this.urlPage = lastSegment;
@@ -52,6 +56,7 @@ export class MoviesComponent implements OnInit {
   }
 
   public searchMovie(name: string) {
+    this.isloading = true;
     if (name === '') {
       this.isSearching = false;
       this.current = 1;
@@ -65,18 +70,21 @@ export class MoviesComponent implements OnInit {
   }
 
   public onGoTo(page: number): void {
+    this.isloading = true;
     this.current = page;
     this.movieService.pageSubject.next(this.current);
     this.getPageData(this.urlPage);
   }
 
   public onNext(page: number): void {
+    this.isloading = true;
     this.current = page + 1;
     this.movieService.pageSubject.next(this.current);
     this.getPageData(this.urlPage);
   }
 
   public onPrevious(page: number): void {
+    this.isloading = true;
     this.current = page - 1;
     this.movieService.pageSubject.next(this.current);
     this.getPageData(this.urlPage);
@@ -87,11 +95,17 @@ export class MoviesComponent implements OnInit {
       this.movieService.getSearchedMovie(this.searchName).subscribe((res) => {
         this.movies = res.results;
         this.total = res.total_pages;
+        setTimeout(() => {
+          this.isloading = false;
+        }, 200);
       });
     } else {
       this.movieService.getMovies().subscribe((res) => {
         this.movies = res.results;
         this.total = 500;
+        setTimeout(() => {
+          this.isloading = false;
+        }, 200);
       });
     }
   }
@@ -101,11 +115,17 @@ export class MoviesComponent implements OnInit {
       this.movieService.getSearchedTvShows(this.searchName).subscribe((res) => {
         this.movies = res.results;
         this.total = res.total_pages;
+        setTimeout(() => {
+          this.isloading = false;
+        }, 200);
       });
     } else {
       this.movieService.getTvShows().subscribe((res) => {
         this.movies = res.results;
         this.total = 500;
+        setTimeout(() => {
+          this.isloading = false;
+        }, 200);
       });
     }
   }

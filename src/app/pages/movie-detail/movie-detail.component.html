@@ -47,6 +47,16 @@
       <p class="detailInfo" *ngIf="selectedMovie?.release_date">
         <strong>Release Date : </strong>{{ selectedMovie?.release_date }}
       </p>
+      <div *ngIf="videotrailerUrl != ''" class="text-black">
+        <a
+          [href]="videotrailerUrl"
+          target="_blank"
+          class="trailer cursor-pointer bg-white text-black text-lg text-center rounded-lg hover:bg-opacity-70 trasition-[1s]"
+        >
+          <ng-icon name="heroPlayCircle" color="black"></ng-icon>
+          Watch Trailer
+        </a>
+      </div>
     </div>
   </div>
 </section>

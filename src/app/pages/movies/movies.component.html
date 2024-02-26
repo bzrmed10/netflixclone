@@ -1,6 +1,6 @@
 <app-search (search)="searchMovie($event)"></app-search>
 <app-loader *ngIf="isloading"></app-loader>
-<div class="flex flex-wrap justify-start mt-14" *ngIf="!isloading">
+<div class="h-full flex flex-wrap justify-start mt-14" *ngIf="!isloading">
   <!-- Movie Card 1 -->
   <div
     *ngFor="let movie of movies"
@@ -8,13 +8,13 @@
   >
     <!-- Movie Content -->
     <div
-      class="bg-black rounded-lg p-4 hover:bg-red-700 cursor-pointer"
+      class="bg-black rounded-lg p-3 hover:bg-red-700 cursor-pointer"
       (click)="selectMovie(movie)"
     >
       <img
         [src]="movie.poster_path | image"
         alt="Movie 1"
-        class="w-full rounded-lg mb-2 poster"
+        class="w-full rounded-lg lg:mb-2 md:mb-2 poster"
       />
       <h3 class="hidden lg:block md:block text-lg font-semibold">
         {{

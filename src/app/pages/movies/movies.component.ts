@@ -47,6 +47,8 @@ export class MoviesComponent implements OnInit {
 
   ngOnInit(): void {
     this.isloading = true;
+    this.current = 1;
+    this.movieService.pageSubject.next(this.current);
     this.route.url.subscribe((segments) => {
       const lastSegment = segments[segments.length - 1].path;
       this.urlPage = lastSegment;
@@ -60,10 +62,12 @@ export class MoviesComponent implements OnInit {
     if (name === '') {
       this.isSearching = false;
       this.current = 1;
+      this.movieService.pageSubject.next(this.current);
       this.getPageData(this.urlPage);
     } else {
       this.isSearching = true;
       this.current = 1;
+      this.movieService.pageSubject.next(this.current);
       this.searchName = name;
       this.getPageData(this.urlPage);
     }

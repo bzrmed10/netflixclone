@@ -56,7 +56,8 @@ export class MovieDetailComponent implements OnInit {
     this.movieService.selectedMovie$.subscribe((movie) => {
       if (movie) {
         this.movieService.getBannerVideo(movie.id).subscribe((res) => {
-          this.videotrailerUrl = `https://www.youtube.com/embed/${res.results[0].key}?autoplay=1&mute=1&loop=1&controls=0`;
+          if (res.results[0])
+            this.videotrailerUrl = `https://www.youtube.com/embed/${res.results[0].key}?autoplay=1&mute=1&loop=1&controls=0`;
         });
       }
       this.selectedMovie = movie;

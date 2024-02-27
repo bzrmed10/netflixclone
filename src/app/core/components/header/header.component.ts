@@ -32,8 +32,8 @@ export class HeaderComponent {
   onToggelMenu() {
     this.toggelMenu = !this.toggelMenu;
   }
+
   onCloselMenu() {
-    console.log(this.toggelMenu);
     this.toggelMenu = false;
   }
 }

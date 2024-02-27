@@ -12,7 +12,6 @@ export class SearchComponent {
   @Output() search: EventEmitter<string> = new EventEmitter<string>();
 
   onSearch(searchform: NgForm) {
-    console.log(searchform.form.value.search);
     this.search.emit(searchform.form.value.search);
   }
 }

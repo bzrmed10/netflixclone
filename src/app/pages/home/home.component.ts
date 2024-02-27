@@ -25,7 +25,6 @@ export class HomeComponent implements OnInit {
 
   fetchUserData() {
     const userData = JSON.parse(sessionStorage.getItem('loggedInUser') || '{}');
-    console.log(userData);
     this.name = userData.name || '';
     this.email = userData.email || '';
     this.profilePic = userData.picture || '';
